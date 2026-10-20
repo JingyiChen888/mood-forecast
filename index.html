@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f4eb" />
+    <meta name="description" content="A tiny interactive weather station for how today feels." />
+    <title>Mood Forecast — A weather report for today</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="./index.html" aria-label="Mood Forecast home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+          <span>MOOD <strong>FORECAST</strong></span>
+        </a>
+        <span class="header-note">A tiny weather station for the inside</span>
+      </header>
+
+      <main>
+        <div class="intro">
+          <p class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL WEATHER STATION</p>
+          <h1>How's the weather <em>in there?</em></h1>
+          <p>Two small observations. One forecast that feels like yours.</p>
+        </div>
+
+        <div class="workspace">
+          <section class="observation-panel" aria-labelledby="observe-title">
+            <div class="panel-heading">
+              <span class="step-number">01 / OBSERVE</span>
+              <h2 id="observe-title">Take a look inside.</h2>
+              <p>There are no right answers. Change your mind as often as you like.</p>
+            </div>
+
+            <form id="forecast-form" novalidate>
+              <fieldset class="choice-group" id="noise-group">
+                <legend><span class="question-number">01</span> How busy is your mind?</legend>
+                <div class="choices" data-group="noise">
+                  <label class="choice"><input type="radio" name="noise" value="quiet" /><span>Quiet</span></label>
+                  <label class="choice"><input type="radio" name="noise" value="busy" /><span>A little busy</span></label>
+                  <label class="choice"><input type="radio" name="noise" value="loud" /><span>Very loud</span></label>
+                </div>
+                <p class="field-error" id="noise-error" aria-live="polite"></p>
+              </fieldset>
+
+              <fieldset class="choice-group" id="energy-group">
+                <legend><span class="question-number">02</span> How much energy do you have?</legend>
+                <div class="choices" data-group="energy">
+                  <label class="choice"><input type="radio" name="energy" value="low" /><span>Running low</span></label>
+                  <label class="choice"><input type="radio" name="energy" value="steady" /><span>Some left</span></label>
+                  <label class="choice"><input type="radio" name="energy" value="full" /><span>Plenty</span></label>
+                </div>
+                <p class="field-error" id="energy-error" aria-live="polite"></p>
+              </fieldset>
+
+              <div class="form-footer">
+                <button class="primary-button" type="submit">Publish my forecast <span aria-hidden="true">↗</span></button>
+                <p id="form-status" class="form-status" role="status" aria-live="polite">Choose an answer above to start changing the sky.</p>
+              </div>
+            </form>
+          </section>
+
+          <section class="weather-panel" aria-labelledby="weather-title">
+            <div class="weather-panel-top">
+              <span class="step-number">02 / NOTICE</span>
+              <span class="live-badge"><span class="live-dot"></span> LIVE SKY</span>
+            </div>
+
+            <div class="sky" id="sky" data-noise="none" data-energy="none" data-weather="waiting" aria-hidden="true">
+              <div class="sun"></div>
+              <div class="cloud cloud-one"></div>
+              <div class="cloud cloud-two"></div>
+              <div class="cloud cloud-three"></div>
+              <div class="rain rain-one"></div>
+              <div class="rain rain-two"></div>
+              <div class="lightning"></div>
+              <div class="sky-horizon"></div>
+              <div class="sky-grain"></div>
+            </div>
+
+            <div class="weather-readout" id="weather-readout" aria-live="polite" aria-atomic="true">
+              <p class="readout-label">CURRENT CONDITIONS</p>
+              <h2 id="weather-title">Waiting for your weather</h2>
+              <p id="weather-description">Pick an answer and watch the sky respond.</p>
+            </div>
+
+            <div class="weather-tip"><span aria-hidden="true">✳</span><p id="weather-hint">You can change either answer to see a different forecast.</p></div>
+          </section>
+        </div>
+
+        <section class="forecast-card" id="forecast-card" aria-labelledby="forecast-card-title" hidden>
+          <div class="card-stamp" aria-hidden="true">MF<br />✳</div>
+          <p class="eyebrow">YOUR FORECAST IS READY</p>
+          <h2 id="forecast-card-title"></h2>
+          <p id="forecast-card-copy"></p>
+          <div class="card-bottom">
+            <p id="forecast-card-conditions"></p>
+            <button class="secondary-button" id="edit-button" type="button">Adjust my forecast <span aria-hidden="true">↗</span></button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>MOOD FORECAST © 2026</span>
+        <span>A small experiment in noticing how you feel.</span>
+      </footer>
+    </div>
+  </body>
+</html>
