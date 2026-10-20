@@ -133,17 +133,19 @@ form.addEventListener('submit', (event) => {
   card.hidden = false;
   publishedKey = key;
   status.textContent = 'Forecast published. You can adjust either answer and try again.';
+  hint.textContent = 'Published. Change an answer above, or use the card below to adjust your forecast.';
   cardTitle.setAttribute('tabindex', '-1');
   cardTitle.focus({ preventScroll: true });
-  card.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'nearest' });
+  card.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
 });
 
 editButton.addEventListener('click', () => {
   card.hidden = true;
   publishedKey = null;
+  renderPreview();
   status.textContent = 'Your answers are still here. Change either one to update the sky.';
   form.querySelector('input[name="noise"]:checked').focus({ preventScroll: true });
-  form.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+  form.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
 });
 
 renderPreview();
