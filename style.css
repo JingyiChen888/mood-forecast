@@ -95,6 +95,7 @@ button:focus-visible, input:focus-visible + span, a:focus-visible { outline: 3px
 .sky[data-weather="storm"] { background: linear-gradient(155deg, #556f87 0%, #8b9ba4 100%); }
 .sky[data-weather="storm"] .sun { opacity: .12; }
 .sky[data-weather="storm"] .lightning { animation: flash 5s infinite; }
+.sky[data-weather="wind"] .cloud { animation-duration: 3.2s; }
 .weather-readout { padding: 20px 26px 12px; }
 .readout-label { margin: 0 0 7px; color: #5e7b8a; }
 .weather-readout h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 30px; font-weight: 400; letter-spacing: -.035em; }
