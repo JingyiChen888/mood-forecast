@@ -48,6 +48,8 @@ const cardTitle = document.querySelector('#forecast-card-title');
 const cardCopy = document.querySelector('#forecast-card-copy');
 const cardConditions = document.querySelector('#forecast-card-conditions');
 const editButton = document.querySelector('#edit-button');
+const mobileForecast = document.querySelector('#mobile-forecast');
+const mobileForecastText = document.querySelector('#mobile-forecast-text');
 
 let publishedKey = null;
 
@@ -80,6 +82,8 @@ function renderPreview() {
     description.textContent = forecast.preview;
     hint.textContent = 'Change either answer to explore another sky, or publish this forecast.';
     status.textContent = 'Your sky is ready. You can keep adjusting it or publish it.';
+    mobileForecast.dataset.weather = forecast.weather;
+    mobileForecastText.textContent = `Current sky: ${forecast.title}. Change an answer to explore.`;
   } else if (noise || energy) {
     sky.dataset.weather = 'forming';
     title.textContent = 'Your sky is taking shape';
@@ -88,12 +92,16 @@ function renderPreview() {
       : 'Choose how busy your mind is to complete the forecast.';
     hint.textContent = 'Every choice changes the sky. Try the other observation next.';
     status.textContent = 'One observation down. Choose the other to see your forecast.';
+    mobileForecast.dataset.weather = 'forming';
+    mobileForecastText.textContent = 'Your sky is taking shape. Choose the other answer.';
   } else {
     sky.dataset.weather = 'waiting';
     title.textContent = 'Waiting for your weather';
     description.textContent = 'Pick an answer and watch the sky respond.';
     hint.textContent = 'You can change either answer to see a different forecast.';
     status.textContent = 'Choose an answer above to start changing the sky.';
+    mobileForecast.dataset.weather = 'waiting';
+    mobileForecastText.textContent = 'Your sky is waiting for an observation.';
   }
 }
 
@@ -134,6 +142,7 @@ form.addEventListener('submit', (event) => {
   publishedKey = key;
   status.textContent = 'Forecast published. You can adjust either answer and try again.';
   hint.textContent = 'Published. Change an answer above, or use the card below to adjust your forecast.';
+  mobileForecastText.textContent = `Published: ${forecast.title}. Adjust an answer to try again.`;
   cardTitle.setAttribute('tabindex', '-1');
   cardTitle.focus({ preventScroll: true });
   card.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });

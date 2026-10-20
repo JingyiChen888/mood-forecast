@@ -42,6 +42,7 @@ button:focus-visible, input:focus-visible + span, a:focus-visible { outline: 3px
 .step-number { color: #b26149; }
 .panel-heading h2 { margin: 19px 0 7px; font-family: Georgia, "Times New Roman", serif; font-size: 34px; font-weight: 400; letter-spacing: -.04em; }
 .panel-heading p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.mobile-forecast { display: none; }
 
 .choice-group { padding: 0; margin: 34px 0 0; border: 0; min-width: 0; }
 .choice-group legend { padding: 0; font-weight: 750; font-size: 14px; }
@@ -133,6 +134,12 @@ button:focus-visible, input:focus-visible + span, a:focus-visible { outline: 3px
   .intro > p:last-child { font-size: 14px; }
   .observation-panel { padding: 25px 20px 21px; }
   .panel-heading h2 { font-size: 30px; }
+  .mobile-forecast { display: flex; align-items: center; gap: 9px; margin: 20px 0 0; padding: 10px 12px; border: 1px solid #c7d8db; border-radius: 8px; background: #e9f0f0; color: #35566b; font-size: 12px; font-weight: 650; line-height: 1.35; }
+  .mobile-forecast-dot { flex: 0 0 11px; height: 11px; border-radius: 50%; background: #b7c3c7; box-shadow: 0 0 0 4px #b7c3c744; }
+  .mobile-forecast[data-weather="sun"] .mobile-forecast-dot, .mobile-forecast[data-weather="partly"] .mobile-forecast-dot { background: #edbc67; box-shadow: 0 0 0 4px #edbc6744; }
+  .mobile-forecast[data-weather="rain"] .mobile-forecast-dot, .mobile-forecast[data-weather="storm"] .mobile-forecast-dot { background: #708bad; box-shadow: 0 0 0 4px #708bad44; }
+  .mobile-forecast[data-weather="fog"] .mobile-forecast-dot, .mobile-forecast[data-weather="overcast"] .mobile-forecast-dot { background: #91a4a8; box-shadow: 0 0 0 4px #91a4a844; }
+  .mobile-forecast[data-weather="wind"] .mobile-forecast-dot { background: #9dbb8a; box-shadow: 0 0 0 4px #9dbb8a44; }
   .choice-group { margin-top: 27px; }
   .choices { gap: 5px; }.choice span { min-height: 56px; font-size: 12px; }
   .sky { height: 228px; flex-basis: 228px; }
